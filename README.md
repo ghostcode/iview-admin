@@ -1,4 +1,4 @@
-# iview-admin
+# view-design-admin
 
 ## Project setup
 ```
