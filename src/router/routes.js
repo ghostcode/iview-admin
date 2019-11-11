@@ -2,7 +2,7 @@ import Main from '@/components/main'
 
 
 /**
- * iview-admin中meta除了原生参数外可配置的参数:
+ * view-design-admin中meta除了原生参数外可配置的参数:
  * meta: {
  *  title: { String|Number|Function }
  *         显示在侧边栏、面包屑和标签栏的文字
@@ -22,10 +22,16 @@ export default [
     name: '_home',
     component: Main,
     redirect: '/home',
+    meta:{
+      icon:'md-person'
+    },
     children: [
       {
         path: '/home',
         name: 'home',
+        meta:{
+          icon:'md-person'
+        },
         component: () => import(/* webpackChunkName: "home" */ '@/views/home/home'),
       },
     ],
@@ -34,10 +40,16 @@ export default [
     path: '/about',
     name: '_about',
     component: Main,
+    meta:{
+      icon:'md-person'
+    },
     children: [
       {
         path: '/about',
         name: 'about',
+        meta:{
+          icon:'md-person'
+        },
         component: () => import(/* webpackChunkName: "about" */ '@/views/about/about'),
       }
     ],

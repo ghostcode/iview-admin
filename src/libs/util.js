@@ -1,4 +1,7 @@
+import config from '@/libs/config'
 import { forEach, hasChild } from '@/libs/tool'
+
+const {useI18n} = config
 
 /**
  * @param {Array} list 通过路由列表得到菜单列表
@@ -22,4 +25,14 @@ export const getMenuByRouter = (list, access) => {
     }
   })
   return res
+}
+
+export const showTitle = (item,vm)=>{
+  let title = (item.meta && item.meta.title) || item.name
+
+  if(useI18n){
+    title = vm.$t(item.name)
+  }
+
+  return title
 }

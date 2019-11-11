@@ -5,11 +5,13 @@
         <template v-if="item.children && item.children.length >= 0">
           <Submenu :name="item.name" :key="`menu-${item.name}`">
             <template slot="title">
-              <Icon type="ios-navigate"></Icon>
-              {{item.name}}
+              <Icon :type="item.meta.icon"></Icon>
+              <span class="menu-name">{{showTitle(item)}}</span>
             </template>
             <template v-for="subitem in item.children">
-              <MenuItem :name="subitem.name" :key="`subitem-${subitem.name}`">{{subitem.name}}</MenuItem>
+              <MenuItem :name="subitem.name" :key="`subitem-${subitem.name}`">
+                {{showTitle(subitem)}}
+              </MenuItem>
             </template>
           </Submenu>
         </template>
@@ -26,8 +28,11 @@
   </div>
 </template>
 <script>
+import mixin from './mixin'
+
 export default {
   name: "SideMenu",
+  mixins:[mixin],
   data() {
     return {};
   },
@@ -64,4 +69,13 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+.collapsed-menu{
+  .menu-name,
+  /deep/.ivu-menu-submenu-title-icon{
+    display: none;
+  }
+  /deep/.ivu-menu-submenu-title{
+    text-align: center;
+  }
+}
 </style>

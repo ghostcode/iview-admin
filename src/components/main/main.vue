@@ -1,14 +1,14 @@
 <template>
   <Layout class="akc-layout">
-    <Sider ref="side1" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed">
-      <side-menu @on-select="goToPage" :active-name="activeName" :open-names="openNames" :menu-list="menuList"></side-menu>
+    <Sider ref="side" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed">
+      <side-menu @on-select="goToPage" :class="menuitemClasses" :active-name="activeName" :open-names="openNames" :menu-list="menuList"></side-menu>
     </Sider>
     <Layout>
       <Header :style="{padding: 0}" class="layout-header-bar">
         <Icon
           @click.native="collapsedSider"
           :class="rotateIcon"
-          :style="{margin: '0 20px'}"
+          :style="{margin: '0 20px',cursor:'pointer'}"
           type="md-menu"
           size="24"
         ></Icon>
@@ -33,7 +33,6 @@ export default {
       isCollapsed: false,
       activeName:this.$route.name,
       openNames:[''],
-      // openNames:['_about'],
     };
   },
   components: {
@@ -50,14 +49,11 @@ export default {
       return this.$store.getters.menuList
     }
   },
-  mounted() {
-    this.openNames = this.getOpenedNamesByActiveName(this.activeName)
-    console.log(this.openNames,'==========')
+  created() {
+    this.getOpenNames()
   },
   methods: {
     goToPage(route){
-      console.log(route)
-
       if(typeof route === 'string') name = route
 
       this.$router.push({
@@ -65,7 +61,10 @@ export default {
       }).catch(e=>{})
     },
     collapsedSider() {
-      this.$refs.side1.toggleCollapse();
+      this.$refs.side.toggleCollapse();
+    },
+    getOpenNames(){
+      this.openNames = this.getOpenedNamesByActiveName(this.activeName)
     },
     getOpenedNamesByActiveName (name) {
       let x = this.$route.matched.map(item => item.name).filter(item => item !== name)
