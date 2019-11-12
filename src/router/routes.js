@@ -18,6 +18,15 @@ import Main from '@/components/main'
  */
 export default [
   {
+    path:'/login',
+    name:'login',
+    meta:{
+      title:'Login-登录',
+      hideInMenu:true,
+    },
+    component:()=>import('@/views/login/login'),
+  },
+  {
     path: '/',
     name: '_home',
     component: Main,
@@ -51,7 +60,16 @@ export default [
           icon:'md-person'
         },
         component: () => import(/* webpackChunkName: "about" */ '@/views/about/about'),
-      }
+      },
+      {
+        path: '/hidden',
+        name: 'hidden',
+        meta:{
+          icon:'logo-android',
+          hideInMenu:true,
+        },
+        component: () => import(/* webpackChunkName: "about" */ '@/views/about/hidden'),
+      },
     ],
   },
 ]

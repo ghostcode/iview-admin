@@ -7,5 +7,5 @@ export default {
    */
   useI18n: true,
   // 默认的语言类型
-  lang:'en',
+  lang:'zh',
 }

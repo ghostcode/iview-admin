@@ -1,5 +1,6 @@
 <template>
   <div class="side-menu-wrapper">
+    <slot></slot>
     <Menu ref="menu" accordion @on-select="handleSelect" :active-name=activeName :open-names=openNames theme="dark" width="auto" >
       <template v-for="item in menuList">
         <template v-if="item.children && item.children.length >= 0">

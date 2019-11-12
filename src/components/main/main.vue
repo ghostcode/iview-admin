@@ -1,17 +1,23 @@
 <template>
   <Layout class="akc-layout">
     <Sider ref="side" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed">
-      <side-menu @on-select="goToPage" :class="menuitemClasses" :active-name="activeName" :open-names="openNames" :menu-list="menuList"></side-menu>
+      <side-menu @on-select="goToPage" :class="menuitemClasses" :active-name="activeName" :open-names="openNames" :menu-list="menuList">
+        <div class="logo">
+          <img v-show="!isCollapsed" :src="maxLogo" alt="">
+          <img v-show="isCollapsed" :src="minLogo" alt="">
+        </div>
+      </side-menu>
     </Sider>
     <Layout>
       <Header :style="{padding: 0}" class="layout-header-bar">
-        <Icon
+        <!-- //todo 收缩导航 -->
+        <!-- <Icon
           @click.native="collapsedSider"
           :class="rotateIcon"
           :style="{margin: '0 20px',cursor:'pointer'}"
           type="md-menu"
           size="24"
-        ></Icon>
+        ></Icon> -->
       </Header>
       <Content :style="{margin: '20px', background: '#fff', minHeight: '260px'}">
         <keep-alive>
@@ -22,7 +28,9 @@
   </Layout>
 </template>
 <script>
-import SideMenu from "./components/side-menu.vue";
+import SideMenu from "./components/side-menu.vue"
+import minLogo from '@/assets/aifadan_min.png'
+import maxLogo from '@/assets/aifadan_max.png'
 
 import "./main.less";
 
@@ -33,6 +41,8 @@ export default {
       isCollapsed: false,
       activeName:this.$route.name,
       openNames:[''],
+      maxLogo,
+      minLogo,
     };
   },
   components: {
@@ -79,17 +89,20 @@ export default {
   background: #f5f7f9;
   position: relative;
   overflow: hidden;
+  .logo{
+    height:60px;
+    text-align: center;
+    img{
+      position: relative;
+      top:50%;
+      transform: translateY(-50%);
+      width:120px;
+    }
+  }
 }
 .layout-header-bar {
   background: #fff;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-}
-.layout-logo-left {
-  width: 90%;
-  height: 30px;
-  background: #5b6270;
-  border-radius: 3px;
-  margin: 15px auto;
 }
 .menu-icon {
   transition: all 0.3s;
