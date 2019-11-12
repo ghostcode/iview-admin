@@ -15,6 +15,7 @@ module.exports = {
     'max-len':0,
     'comma-dangle':0,
     'prefer-const':0,
+    "vue/no-parsing-error":'off',
   },
   parserOptions: {
     parser: 'babel-eslint',

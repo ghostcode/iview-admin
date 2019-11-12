@@ -2,7 +2,7 @@ import Main from '@/components/main'
 
 
 /**
- * view-design-admin中meta除了原生参数外可配置的参数:
+ * view-design-admin中meta除了原生参数外,可配置的参数:
  * meta: {
  *  title: { String|Number|Function }
  *         显示在侧边栏、面包屑和标签栏的文字
@@ -50,7 +50,7 @@ export default [
     name: '_about',
     component: Main,
     meta:{
-      icon:'md-person'
+      icon:'logo-android'
     },
     children: [
       {
