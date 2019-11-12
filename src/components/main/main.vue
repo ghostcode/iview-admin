@@ -18,6 +18,7 @@
           type="md-menu"
           size="24"
         ></Icon> -->
+        <HeaderBar></HeaderBar>
       </Header>
       <Content :style="{margin: '20px', background: '#fff', minHeight: '260px'}">
         <keep-alive>
@@ -29,6 +30,7 @@
 </template>
 <script>
 import SideMenu from "./components/side-menu.vue"
+import HeaderBar from './components/header-bar'
 import minLogo from '@/assets/aifadan_min.png'
 import maxLogo from '@/assets/aifadan_max.png'
 
@@ -46,7 +48,8 @@ export default {
     };
   },
   components: {
-    SideMenu
+    SideMenu,
+    HeaderBar,
   },
   computed: {
     rotateIcon() {

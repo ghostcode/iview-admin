@@ -37,14 +37,14 @@ export default {
         user: [
           {
             required: true,
-            message: "Please fill in the user name",
+            message: this.$t('userNameRule'),
             trigger: "blur"
           }
         ],
         password: [
           {
             required: true,
-            message: "Please fill in the password.",
+            message: this.$t('passwordRule'),
             trigger: "blur"
           },
           {
@@ -77,7 +77,7 @@ export default {
         if (valid) {
           this.$Message.success("Success!");
         } else {
-          this.$Message.error("Fail!");
+          this.$Message.error(this.$t('loginFail'));
         }
       });
     }
